@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.security.PrivateKey;
 import java.sql.Time;
 
 @Getter
@@ -25,6 +26,10 @@ public class Appointment {
     @OneToOne
     @JoinColumn(name = "timeslot_id")
     private TimeSlot timeSlot;
+
+    @OneToOne
+    @JoinColumn(name="work_id")
+    private Work work;
 
     @OneToOne
     private Person person;

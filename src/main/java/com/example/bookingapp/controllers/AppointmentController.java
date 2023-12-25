@@ -32,10 +32,10 @@ public class AppointmentController {
     @Autowired
     BookingAppService bookingAppService;
 
-    @GetMapping("appointments")
-    public List<Appointment> getAppointments(){
-        return appointmentRepository.findAll();
-    }
+//    @GetMapping("appointments")
+//    public List<Appointment> getAppointments(){
+//        return appointmentRepository.findAll();
+//    }
 
 //    @GetMapping("timeslot/{id}")
 //    public TimeSlot viewTimeSlot(@PathVariable Long id){
@@ -47,7 +47,7 @@ public class AppointmentController {
     public String addAppointment(@PathVariable Long id, @RequestBody Appointment appointment){
             TimeSlot timeSlot = timeSlotRepository.findById(id).get();
             appointment.setTimeSlot(timeSlot);
-            appointment.setTimeSlotStatus(TimeSlotStatus.NOSHOW);
+            appointment.setTimeSlotStatus(TimeSlotStatus.ACTIVE);
             appointmentRepository.save(appointment);
         return "New added " + appointment.getId();
     }

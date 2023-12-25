@@ -31,4 +31,6 @@ public class Location {
     @JoinColumn(name = "timeslot_id")
     private List<TimeSlot> timeSlots;
 
+
+
 }
