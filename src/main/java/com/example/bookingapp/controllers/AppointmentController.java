@@ -1,9 +1,8 @@
 package com.example.bookingapp.controllers;
 
 import com.example.bookingapp.entity.Appointment;
-import com.example.bookingapp.entity.Location;
 import com.example.bookingapp.entity.TimeSlot;
-import com.example.bookingapp.entity.TimeSlotStatus;
+import com.example.bookingapp.entity.AppointmentStatus;
 import com.example.bookingapp.repository.AppointmentRepository;
 import com.example.bookingapp.repository.LocationRepository;
 import com.example.bookingapp.repository.TimeSlotRepository;
@@ -12,8 +11,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Time;
-import java.util.List;
+
 
 
 @RestController
@@ -47,7 +45,7 @@ public class AppointmentController {
     public String addAppointment(@PathVariable Long id, @RequestBody Appointment appointment){
             TimeSlot timeSlot = timeSlotRepository.findById(id).get();
             appointment.setTimeSlot(timeSlot);
-            appointment.setTimeSlotStatus(TimeSlotStatus.ACTIVE);
+            appointment.setAppointmentStatus(AppointmentStatus.ACTIVE);
             appointmentRepository.save(appointment);
         return "New added " + appointment.getId();
     }

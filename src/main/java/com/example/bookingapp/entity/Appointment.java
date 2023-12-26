@@ -5,9 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
-import java.security.PrivateKey;
 import java.sql.Time;
 
 @Getter
@@ -20,8 +18,8 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String personCode;
-    private TimeSlotStatus timeSlotStatus;
     private Time statusUpdateTime;
+    private AppointmentStatus appointmentStatus;
 
     @OneToOne
     @JoinColumn(name = "timeslot_id")

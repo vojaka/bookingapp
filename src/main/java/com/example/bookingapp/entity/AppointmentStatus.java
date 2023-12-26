@@ -1,5 +1,5 @@
 package com.example.bookingapp.entity;
 
-public enum TimeSlotStatus {
+public enum AppointmentStatus {
     ACTIVE, USED, CANCELLED, NOSHOW
 }
