@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
-import java.sql.Time;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -17,12 +17,11 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String personCode;
-    private Time statusUpdateTime;
+    private LocalDateTime statusUpdateTime;
     private AppointmentStatus appointmentStatus;
 
     @OneToOne
-    @JoinColumn(name = "timeslot_id")
+    @JoinColumn(name = "id")
     private TimeSlot timeSlot;
 
     @OneToOne

@@ -8,11 +8,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
-import org.joda.time.LocalTime;
+
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 
 @Getter
@@ -26,19 +26,21 @@ public class TimeSlot {
     private long id;
 
     @NotNull
-    @JsonDeserialize(using= LocalDateDeserializer.class)
+    @JsonFormat
+            (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate initialDate;
 
     @NotNull
-    @JsonDeserialize(using= LocalDateDeserializer.class)
+    @JsonFormat
+            (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate endDate;
 
     @NotNull
-    @JsonFormat(pattern = "HH:mm:ss")
+    @JsonFormat(pattern = "HH:mm")
     private LocalTime initialTime;
 
     @NotNull
-    @JsonFormat(pattern = "HH:mm:ss")
+    @JsonFormat(pattern = "HH:mm")
     private LocalTime endTime;
 
     private Boolean isTaken;

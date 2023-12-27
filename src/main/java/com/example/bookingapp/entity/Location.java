@@ -6,9 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.joda.time.LocalTime;
+//import org.joda.time.LocalTime;
 
 import javax.persistence.*;
+import java.time.LocalTime;
 import java.util.List;
 
 @Getter
@@ -28,7 +29,7 @@ public class Location {
     private LocalTime locationEndTime;
 
     @OneToMany
-    @JoinColumn(name = "timeslot_id")
+    @JoinColumn(name = "id")
     private List<TimeSlot> timeSlots;
 
 
