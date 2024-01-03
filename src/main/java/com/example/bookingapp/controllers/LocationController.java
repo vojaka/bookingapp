@@ -34,6 +34,7 @@ public class LocationController {
     public List<Location> getLocations() {
         return locationRepository.findAllByOrderByLocationEndTimeAsc();
     }
+
     @PostMapping("locations")
     public String addLocations(@RequestBody List<Location> newLocations){
         long initCount = locationRepository.count();

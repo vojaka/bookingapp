@@ -21,7 +21,7 @@ public class Appointment {
     private AppointmentStatus appointmentStatus;
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "timeslot_id")
     private TimeSlot timeSlot;
 
     @OneToOne

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class BookingAppService {
     public boolean checkTimeSlot(Long id, TimeSlot timeSlot, Location location) {
 
+
 ////        SimpleDateFormat localDateFormat = new SimpleDateFormat("hh:mm:ss");
 ////        String timeSlotEndTime = localDateFormat.format(timeSlot.getEndDate());
 //        LocalTime timeSlotEndTime = LocalTime.parse(timeSlot.getEndDate());

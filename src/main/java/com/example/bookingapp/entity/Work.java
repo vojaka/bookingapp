@@ -19,6 +19,6 @@ public class Work {
     private Integer workDurationMinutes;
 
     @ManyToOne
-    @JoinColumn(name = "WorkType_WorkTypeId")
+    @JoinColumn(name = "WorkTypeId")
     private WorkType workType;
 }

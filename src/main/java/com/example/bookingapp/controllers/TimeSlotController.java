@@ -7,6 +7,8 @@ import com.example.bookingapp.repository.TimeSlotRepository;
 import com.example.bookingapp.service.BookingAppService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,18 +38,13 @@ public class TimeSlotController {
         return timeSlot;
     }
 
+    @ResponseBody
     @PostMapping("location/{id}/timeslot")
-    public String addTimeSlot(@PathVariable Long id, @RequestBody TimeSlot timeSlot){
+    public TimeSlot addTimeSlot(@PathVariable Long id, @RequestBody TimeSlot timeSlot){
             Location location = locationRepository.findById(id).get();
-            if (bookingAppService.checkTimeSlot(id, timeSlot, location) == true)
-            {
-                timeSlot.setLocation(location);
-                timeSlot.setIsTaken(true);
-                timeSlotRepository.save(timeSlot);
-                return "New added " + timeSlot.getId();
-            } else {
-                return "Not added ";
-            }
+            timeSlot.setLocation(location);
+            timeSlotRepository.save(timeSlot);
+        return timeSlot;
     }
 
     @DeleteMapping("timeslot/{id}")

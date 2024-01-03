@@ -1,8 +1,6 @@
 package com.example.bookingapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.datatype.joda.deser.LocalDateDeserializer;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,7 +26,7 @@ public class TimeSlot {
     @NotNull
     @JsonFormat
             (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
-    private LocalDate initialDate;
+    private LocalDate startDate;
 
     @NotNull
     @JsonFormat
@@ -37,7 +35,7 @@ public class TimeSlot {
 
     @NotNull
     @JsonFormat(pattern = "HH:mm")
-    private LocalTime initialTime;
+    private LocalTime startTime;
 
     @NotNull
     @JsonFormat(pattern = "HH:mm")
@@ -49,7 +47,4 @@ public class TimeSlot {
     @JoinColumn(name = "location_id")
     private Location location;
 
-    @OneToOne
-    @JoinColumn(name = "appointment_id")
-    private Appointment appointment;
 }

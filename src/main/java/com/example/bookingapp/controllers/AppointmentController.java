@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @RestController
@@ -35,10 +36,11 @@ public class AppointmentController {
     @Autowired
     PersonRepository personRepository;
 
-//    @GetMapping("appointments")
-//    public List<Appointment> getAppointments(){
-//        return appointmentRepository.findAll();
-//    }
+    @GetMapping("appointments")
+    public List<Appointment> getAppointments(){
+        List<Appointment> appointments= appointmentRepository.findAll();
+        return appointments;
+    }
 
 //    @GetMapping("timeslot/{id}")
 //    public TimeSlot viewTimeSlot(@PathVariable Long id){
@@ -56,8 +58,8 @@ public class AppointmentController {
         appointment.setPerson(person);
         appointment.setStatusUpdateTime(LocalDateTime.now());
         appointmentRepository.save(appointment);
-        timeSlot.setAppointment(appointment);
-        timeSlotRepository.save(timeSlot);
+        //timeSlot.setAppointment(appointment);
+        //timeSlotRepository.save(timeSlot);
         return "New added " + appointment.getId();
     }
 
